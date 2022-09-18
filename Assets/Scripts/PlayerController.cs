@@ -16,10 +16,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Makes it move forward
-        Vec = transform.localPosition;
+        //Makes plne move forward
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        Vec.y += Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        Vec = transform.localPosition;
+      
+      //Makes plne go up
+       if (Input.GetKey(KeyCode.W)) 
+       {
+            transform.Translate(Vector3.up * Time.deltaTime * speed);
+       }
+        
+      //Makes plne go down
+       if (Input.GetKey(KeyCode.S))
+       {
+            transform.Translate(Vector3.down * Time.deltaTime * speed);
+       }
+        
     }
 
 }
