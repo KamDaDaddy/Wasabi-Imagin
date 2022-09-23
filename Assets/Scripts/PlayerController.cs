@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Vector3 Vec;
     public float speed = 15;
-    Animator animator;
-    
+    public float RotateSpeed;
+    private float verticalInput;
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+       
     }
 
     // Update is called once per frame
@@ -19,19 +18,12 @@ public class PlayerController : MonoBehaviour
     {
         //Makes plne move forward
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        Vec = transform.localPosition;
-      
-      //Makes plne go up
-       if (Input.GetKey(KeyCode.W)) 
-       {
-            transform.Translate(Vector3.up * Time.deltaTime * speed);
-       }
         
-      //Makes plne go down
-       if (Input.GetKey(KeyCode.S))
-       {
-            transform.Translate(Vector3.down * Time.deltaTime * speed);
-       }
+        verticalInput = Input.GetAxis("Vertical");
+      
+      //Makes plne go up/down 
+        transform.Rotate(Vector3.right * Time.deltaTime * RotateSpeed * verticalInput);
+
         
     }
 
